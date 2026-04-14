@@ -1,16 +1,18 @@
-import AppLogoIcon from '@/components/app-logo-icon';
+import logo from '../images/logo.png';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 export default function AppLogo() {
     return (
-        <>
-            <div className="flex aspect-square size-8 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
-                <AppLogoIcon className="size-5 fill-current text-white dark:text-black" />
-            </div>
-            <div className="ml-1 grid flex-1 text-left text-sm">
+        <div className="flex items-center">
+            <Avatar>
+                <AvatarImage src={logo} alt="CIHAS" />
+                <AvatarFallback>CIHAS</AvatarFallback>
+            </Avatar>
+            <div className="ml-1 grid flex-1 text-left text-sm md:text-lg lg:text-2xl">
                 <span className="mb-0.5 truncate leading-tight font-semibold">
-                    Laravel Starter Kit
+                    CHARLOTTE IHAS
                 </span>
             </div>
-        </>
+        </div>
     );
 }
