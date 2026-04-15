@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
-use App\Http\Controllers\WebController;
 
 Route::inertia('/', 'welcome', [
     'canRegister' => Features::enabled(Features::registration()),
@@ -19,6 +20,9 @@ Route::get('/contact-us', [WebController::class, 'contactUs'])->name('contact-us
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
+
+    // Departments
+    Route::resource('departments', DepartmentController::class);
 });
 
 require __DIR__.'/settings.php';
