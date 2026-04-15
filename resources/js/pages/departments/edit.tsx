@@ -9,10 +9,12 @@ import {
     SelectItem,
     SelectTrigger,
     SelectContent,
+    SelectValue,
 } from '@/components/ui/select';
 import { update } from '@/routes/departments';
+import { Department } from '@/types';
 
-interface FormFields {
+interface TextInputFields {
     name: string;
     type: string;
     label: string;
@@ -20,7 +22,7 @@ interface FormFields {
     placeHolder?: string;
 }
 
-const departmentFields: FormFields[] = [
+const departmentFields: TextInputFields[] = [
     {
         name: 'name',
         type: 'text',
@@ -36,20 +38,21 @@ const departmentFields: FormFields[] = [
 ];
 
 export default function EditDepartment() {
-    const { department } = usePage().props;
+    const { department } = usePage<{ department: Department }>().props;
 
     return (
         <>
             <Head title="Edit-department" />
             <div className="p-4">
                 <Heading
-                    title="Create department"
+                    title="Edit department"
                     description="Fill the form below to edit a department"
                 />
                 {/** form */}
                 <Form
                     className="flex max-w-7xl flex-col gap-4"
                     action={update({ id: department.id })}
+                    method="put"
                 >
                     {({ processing, errors }) => (
                         <>
@@ -67,12 +70,13 @@ export default function EditDepartment() {
                             </FieldGroup>
                             <DescriptionField />
 
+                            {/** status */}
                             <Select
                                 name="status"
                                 defaultValue={department.status}
                             >
                                 <SelectTrigger className="w-48">
-                                    Status
+                                    <SelectValue placeholder="Select status" />
                                 </SelectTrigger>
 
                                 <SelectContent>

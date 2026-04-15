@@ -19,3 +19,29 @@ export type AuthLayoutProps = {
     title?: string;
     description?: string;
 };
+
+export type TextInputFields = {
+    name: string;
+    type?: string;
+    label: string;
+    required: boolean;
+    placeHolder?: string;
+};
+
+export type SelectFields = {
+    name: string;
+    label: string;
+    errors?: string;
+    defaultValue?: string;
+    required?: boolean;
+    placeHolder?: string;
+    items: { value: string; label: string }[];
+};
+
+export type TextAreaFields = {
+    name: string;
+    label: string;
+    errors?: string;
+    defaultValue?: string;
+    required?: boolean;
+};

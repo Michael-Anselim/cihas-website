@@ -4,6 +4,7 @@ import Heading from '@/components/heading';
 import TablePagination from '@/components/pagination';
 import DepartmentTable from '@/components/tables/department-table';
 import TextLink from '@/components/text-link';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { Department, DepartmentResponse } from '@/types';
 
@@ -22,7 +23,10 @@ export default function Departments() {
                     description="Manage departments details, visibility and status"
                 />
 
-                <div className="flex justify-end">
+                <div className="flex justify-between">
+                    <Badge variant="secondary">
+                        {departments.total}- records found
+                    </Badge>
                     <Button asChild>
                         <TextLink href="/departments/create">
                             <PlusCircle /> Add department

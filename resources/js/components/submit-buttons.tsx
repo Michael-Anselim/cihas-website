@@ -1,3 +1,4 @@
+import type { RouteDefinition } from '@/wayfinder';
 import TextLink from './text-link';
 import { Button } from './ui/button';
 
@@ -5,7 +6,7 @@ import { Button } from './ui/button';
 interface SubmitButtonsProps {
     processing: boolean;
     errors?: string[];
-    fallBackLink: string;
+    fallBackLink: RouteDefinition;
 }
 export default function SubmitButtons({
     processing,

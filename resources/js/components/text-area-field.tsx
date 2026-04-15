@@ -1,28 +1,22 @@
+import type { TextAreaFields } from '@/types';
 import { Field, FieldError, FieldLabel } from './ui/field';
-import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
 
-// text field props interface
-interface TextFieldProps {
-    name: string;
-    label: string;
-    errors?: string;
-    type?: string;
-    defaultValue?: string;
-}
-export default function TextField({
+// text area props
+export default function TextAreaField({
     name,
     label,
     errors,
-    type,
+    required,
     defaultValue,
-}: TextFieldProps) {
+}: TextAreaFields) {
     return (
         <Field>
             <FieldLabel htmlFor={name}>{label}</FieldLabel>
-            <Input
-                type={type}
+            <Textarea
                 name={name}
-                className="border-primary/30"
+                required={required}
+                id={name}
                 defaultValue={defaultValue}
             />
             {errors && <FieldError>{errors}</FieldError>}

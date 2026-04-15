@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::query()->where('status', 'active')->paginate(10);
+        $departments = Department::query()->select('id', 'name', 'code', 'status')->where('status', 'active')->paginate(10);
 
         return Inertia::render('departments/index', compact('departments'));
     }

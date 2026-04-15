@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
@@ -19,10 +21,13 @@ Route::get('/galery', [WebController::class, 'gallery'])->name('galery');
 Route::get('/contact-us', [WebController::class, 'contactUs'])->name('contact-us');
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     // Departments
     Route::resource('departments', DepartmentController::class);
+
+    // Programs
+    Route::resource('programs', ProgramController::class);
 });
 
 require __DIR__.'/settings.php';

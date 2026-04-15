@@ -5,16 +5,9 @@ import SubmitButtons from '@/components/submit-buttons';
 import TextField from '@/components/text-field';
 import { FieldGroup } from '@/components/ui/field';
 import { store } from '@/routes/departments';
+import type { TextInputFields } from '@/types';
 
-interface FormFields {
-    name: string;
-    type: string;
-    label: string;
-    required: boolean;
-    placeHolder?: string;
-}
-
-const departmentFields: FormFields[] = [
+const departmentFields: TextInputFields[] = [
     {
         name: 'name',
         type: 'text',
@@ -42,6 +35,7 @@ export default function CreateDepartment() {
                 <Form
                     className="flex max-w-7xl flex-col gap-4"
                     action={store()}
+                    method="post"
                 >
                     {({ processing, errors }) => (
                         <>
