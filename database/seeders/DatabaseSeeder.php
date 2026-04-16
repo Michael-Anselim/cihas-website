@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
 
         //  Run seeders
         $this->call([
-            DepartmentSeeder::class, ]);
+            DepartmentSeeder::class,
+            ProgramSeeder::class,
+        ]);
+
     }
 }

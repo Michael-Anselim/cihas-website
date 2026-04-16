@@ -2,14 +2,12 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
 
-Route::inertia('/', 'welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-])->name('home');
+Route::get('/', [WebController::class, 'home'])->name('home');
 
 // Website pages
 Route::get('/about-us', [WebController::class, 'aboutUs'])->name('about-us');
@@ -28,6 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
 
     // Programs
     Route::resource('programs', ProgramController::class);
+
+    // Posts
+    Route::resource('posts', PostController::class);
 });
 
 require __DIR__.'/settings.php';

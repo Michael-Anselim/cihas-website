@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use Inertia\Inertia;
 
 class WebController extends Controller
 {
+    public function home()
+    {
+        $programs = Program::query()
+            ->with('department')
+            ->take(3)
+            ->get();
+
+        return Inertia::render('website/welcome', compact('programs'));
+    }
+
     public function aboutUs()
     {
         return Inertia::render('website/about-us');

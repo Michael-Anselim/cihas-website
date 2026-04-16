@@ -35,9 +35,9 @@ export default function Departments() {
                 </div>
 
                 {/** departments table */}
-                <DepartmentTable data={data} />
+                <DepartmentTable data={data} pagination={departments} />
                 <TablePagination
-                    isActive={departments.links.active}
+                    isActive={true}
                     currentPage={departments.current_page}
                     prevPageUrl={departments.prev_page_url}
                     nextPageUrl={departments.next_page_url}

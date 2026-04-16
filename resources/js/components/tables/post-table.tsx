@@ -1,8 +1,8 @@
 import { Form } from '@inertiajs/react';
 import { Edit, Trash } from 'lucide-react';
-import { edit } from '@/actions/App/Http/Controllers/DepartmentController';
-import { destroy } from '@/routes/departments';
-import type { Department, DepartmentResponse } from '@/types';
+import { edit } from '@/actions/App/Http/Controllers/PostController';
+import { destroy } from '@/routes/posts';
+import type { Post, PostResponse } from '@/types';
 import TextLink from '../text-link';
 import {
     AlertDialog,
@@ -25,30 +25,32 @@ import {
     TableRow,
 } from '../ui/table';
 
-export default function DepartmentTable({ data, pagination }: { data: Department[]; pagination: DepartmentResponse }) {
+export default function PostTable({ data, pagination }: { data: Post[]; pagination: PostResponse }) {
     return (
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>s/n</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Code</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>S/N</TableHead>
+                    <TableHead>Title</TableHead>
+                    <TableHead>Department</TableHead>
+                    <TableHead>Category</TableHead>
+                    <TableHead>Date</TableHead>
                     <TableHead>Actions</TableHead>
                 </TableRow>
             </TableHeader>
 
             <TableBody>
-                {data.map((department, index) => (
-                    <TableRow key={department.name}>
+                {data.map((post, index) => (
+                    <TableRow key={post.id}>
                         <TableCell>{(pagination.current_page - 1) * pagination.per_page + index + 1}</TableCell>
-                        <TableCell>{department.name}</TableCell>
-                        <TableCell>{department.code}</TableCell>
-                        <TableCell>{department.status}</TableCell>
+                        <TableCell>{post.title}</TableCell>
+                        <TableCell>{post.department?.name || '-'}</TableCell>
+                        <TableCell className="capitalize">{post.category}</TableCell>
+                        <TableCell>{new Date(post.date).toLocaleDateString()}</TableCell>
                         <TableCell>
                             <div className="flex items-center gap-2">
                                 <Button size="sm" asChild>
-                                    <TextLink href={edit(department.id)}>
+                                    <TextLink href={edit(post.id)}>
                                         <Edit />
                                     </TextLink>
                                 </Button>
@@ -68,7 +70,7 @@ export default function DepartmentTable({ data, pagination }: { data: Department
                                             <AlertDialogDescription>
                                                 This action cannot be undone.
                                                 This will permanently delete
-                                                your department.
+                                                your post and its associated files.
                                             </AlertDialogDescription>
                                         </AlertDialogHeader>
                                         <AlertDialogFooter>
@@ -78,7 +80,7 @@ export default function DepartmentTable({ data, pagination }: { data: Department
                                             <Form
                                                 method="delete"
                                                 action={destroy({
-                                                    id: department.id,
+                                                    id: post.id,
                                                 })}
                                             >
                                                 <AlertDialogAction type="submit">

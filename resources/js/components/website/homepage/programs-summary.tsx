@@ -1,56 +1,15 @@
-import {
-    GraduationCap,
-    Palette,
-    Music,
-    Dumbbell,
-    ArrowRight,
-} from 'lucide-react';
 import Heading from '@/components/heading';
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import type { Program } from '@/types';
 import logo from '../../../images/logo.png';
 
-const programs = [
-    {
-        icon: GraduationCap,
-        title: 'Nursing and Midwifery',
-        description:
-            'Advanced placement courses, honors programs, and specialized academic tracks to challenge and inspire students.',
-        department: 'Nursing and Midwifery',
-        color: 'bg-blue-500',
-    },
-    {
-        icon: Palette,
-        title: 'Arts & Creative',
-        description:
-            'Comprehensive arts education including visual arts, theater, music, and digital media programs.',
-        department: 'Arts & Creative',
-        color: 'bg-purple-500',
-    },
-    {
-        icon: Dumbbell,
-        title: 'Athletics & Sports',
-        description:
-            'Competitive sports programs and physical education focused on teamwork, health, and sportsmanship.',
-        department: 'Athletics & Sports',
-        color: 'bg-green-500',
-    },
-    {
-        icon: Music,
-        title: 'Music & Performance',
-        description:
-            'Award-winning music programs with opportunities for vocal and instrumental performance at all levels.',
-        department: 'Music & Performance',
-        color: 'bg-orange-500',
-    },
-];
-
-export default function ProgramsSummary() {
+export default function ProgramsSummary({ data }: { data: Program[] }) {
     return (
         <section className="relative py-16">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+            <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-accent/5" />
             <div className="relative mx-auto max-w-6xl px-4">
                 <Card className="border-none bg-background/80 shadow-sm backdrop-blur-sm">
                     <CardHeader className="pb-8 text-center">
@@ -66,26 +25,26 @@ export default function ProgramsSummary() {
                     </CardHeader>
                     <CardContent>
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                            {programs.map((program, index) => (
+                            {data.map((program, index) => (
                                 <Card
                                     key={index}
                                     className="group overflow-hidden border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <CardHeader className="pb-4">
                                         <Badge variant="secondary">
-                                            {program.department}
+                                            {program.department.name}
                                         </Badge>
                                         <div className="flex flex-col items-center gap-4">
                                             <img
                                                 src={logo}
-                                                alt={program.title}
-                                                aria-label={`Program name: ${program.title}`}
+                                                alt={program.name}
+                                                aria-label={`Program name: ${program.name}`}
                                                 aria-hidden="true"
                                                 className="max-h-48"
                                             />
                                             <div className="flex-1">
                                                 <h3 className="text-xl font-bold transition-colors duration-300 group-hover:text-primary">
-                                                    {program.title}
+                                                    {program.name}
                                                 </h3>
                                             </div>
                                         </div>
@@ -107,7 +66,7 @@ export default function ProgramsSummary() {
                             ))}
                         </div>
                         <div className="mt-16 text-center">
-                            <div className="rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/10 to-accent/10 p-8">
+                            <div className="rounded-2xl border border-primary/20 bg-linear-to-r from-primary/10 to-accent/10 p-8">
                                 <h3 className="mb-3 text-xl font-bold text-foreground">
                                     Ready to Get Started?
                                 </h3>

@@ -19,4 +19,10 @@ class Department extends Model
     {
         return $this->hasMany(Program::class);
     }
+
+    // Department to posts relationship
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }
