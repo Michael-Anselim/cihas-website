@@ -4,10 +4,10 @@ import FeaturesSection from '@/components/website/homepage/features';
 import NewsSummary from '@/components/website/homepage/news-summary';
 import ProgramsSummary from '@/components/website/homepage/programs-summary';
 import WelcomeNote from '@/components/website/homepage/welcome-note';
-import type { Program } from '@/types';
+import type { Program, Post } from '@/types';
 
 export default function Welcome() {
-    const { programs } = usePage<{ programs: Program[] }>().props;
+    const { programs, posts } = usePage<{ programs: Program[], posts: Post[] }>().props;
 
     return (
         <>
@@ -36,7 +36,7 @@ export default function Welcome() {
 
                 {/** News Summary */}
                 <section className="animate-fade-in-up bg-muted/30">
-                    <NewsSummary />
+                    <NewsSummary posts={posts} />
                 </section>
             </div>
         </>

@@ -1,15 +1,12 @@
 import { Head } from '@inertiajs/react';
 import {
     Database,
-    HelpCircle,
-    Settings,
     Mail,
     FolderArchive,
     Users,
 } from 'lucide-react';
 import Heading from '@/components/heading';
 import TextLink from '@/components/text-link';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 const resources = [
@@ -80,7 +77,7 @@ export default function ICTServices() {
                                                     href={resource.link}
                                                     className="text-sm font-medium"
                                                 >
-                                                    Access Resource
+                                                    Access Sercice
                                                 </TextLink>
                                             </CardContent>
                                         </Card>

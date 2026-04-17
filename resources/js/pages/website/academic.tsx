@@ -1,80 +1,37 @@
-import { Head } from '@inertiajs/react';
-import { BookOpen, Award, Target, Star } from 'lucide-react';
+import { Head, usePage } from '@inertiajs/react';
+import { BookOpen, Sun, Monitor, Microscope } from 'lucide-react';
 import Heading from '@/components/heading';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-
-const departments = [
-    {
-        name: 'Mathematics & Sciences',
-        head: 'Dr. Sarah Johnson',
-        programs: [
-            'Mathematics',
-            'Physics',
-            'Chemistry',
-            'Biology',
-            'Computer Science',
-        ],
-        description:
-            'Building strong analytical and problem-solving skills through rigorous STEM education.',
-    },
-    {
-        name: 'Languages & Literature',
-        head: 'Ms. Patricia Williams',
-        programs: [
-            'English',
-            'French',
-            'Spanish',
-            'Creative Writing',
-            'Journalism',
-        ],
-        description:
-            'Developing communication skills and cultural appreciation through language arts.',
-    },
-    {
-        name: 'Social Sciences',
-        head: 'Mr. Robert Davis',
-        programs: ['History', 'Geography', 'Economics', 'Civics', 'Psychology'],
-        description:
-            'Understanding human society and developing critical thinking about global issues.',
-    },
-    {
-        name: 'Creative Arts',
-        head: 'Mrs. Emily Brown',
-        programs: ['Visual Arts', 'Music', 'Drama', 'Dance', 'Digital Media'],
-        description:
-            'Nurturing creativity and self-expression through various artistic mediums.',
-    },
-];
+import type { Program } from '@/types';
+import logo from '../../images/logo.png';
 
 const facilities = [
     {
         name: 'Science Laboratories',
         description:
             'Modern, well-equipped labs for physics, chemistry, and biology experiments.',
-        icon: Target,
     },
     {
-        name: 'Digital Library',
+        name: 'Library',
         description:
             'Extensive collection of books, journals, and digital resources for research and learning.',
-        icon: BookOpen,
     },
     {
         name: 'Computer Labs',
         description:
             'State-of-the-art technology infrastructure with high-speed internet and modern software.',
-        icon: Award,
     },
     {
-        name: 'Art Studios',
+        name: 'Sports & entertainment',
         description:
-            'Creative spaces for visual arts, music practice rooms, and performance areas.',
-        icon: Star,
+            'A modern football stadium, basketball court, and a gym for fitness and recreational activities.',
     },
 ];
 
 export default function Academic() {
+    const { programs } = usePage<{ programs: Program[] }>().props;
+
     return (
         <>
             <Head title="Academic" />
@@ -85,58 +42,109 @@ export default function Academic() {
                     <div className="mx-auto max-w-6xl px-4">
                         <Card className="border-none">
                             <CardHeader className="pb-8 text-center">
-                                <Heading title="Academic Departments" />
+                                <Heading title="Academic Programs" />
                                 <p className="mx-auto max-w-2xl text-muted-foreground">
-                                    Expert faculty guiding students through
-                                    comprehensive subject areas
+                                    Explore our comprehensive range of academic
+                                    programs designed to prepare students for
+                                    success
                                 </p>
                             </CardHeader>
                             <CardContent>
                                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                                    {departments.map((dept, index) => (
-                                        <Card
-                                            key={index}
-                                            className="group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                                        >
-                                            <CardHeader>
-                                                <div className="flex items-start justify-between">
-                                                    <div className="flex-1">
-                                                        <h3 className="mb-2 text-xl font-bold transition-colors duration-300 group-hover:text-primary">
-                                                            {dept.name}
-                                                        </h3>
-                                                    </div>
+                                    {programs.length > 0 ? (
+                                        programs.map((program, index) => (
+                                            <Card
+                                                key={index}
+                                                className="group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                                            >
+                                                <div className="relative aspect-video overflow-hidden bg-muted">
+                                                    {program.image ? (
+                                                        <img
+                                                            src={program.image}
+                                                            alt={program.name}
+                                                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                                        />
+                                                    ) : (
+                                                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
+                                                            <div className="text-center">
+                                                                <div className="mx-auto mb-2 flex size-12 items-center justify-center rounded-full bg-primary/20">
+                                                                    <BookOpen className="size-6 text-primary" />
+                                                                </div>
+                                                                <p className="text-sm text-muted-foreground">
+                                                                    No Image
+                                                                    Available
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    )}
                                                 </div>
-                                                <p className="mb-4 leading-relaxed text-muted-foreground">
-                                                    {dept.description}
-                                                </p>
-                                            </CardHeader>
-                                            <CardContent>
-                                                <div className="space-y-2">
-                                                    <h4 className="text-sm font-semibold">
-                                                        Programs:
-                                                    </h4>
-                                                    <div className="flex flex-wrap gap-2">
-                                                        {dept.programs.map(
-                                                            (
-                                                                program,
-                                                                progIndex,
-                                                            ) => (
-                                                                <Badge
-                                                                    key={
-                                                                        progIndex
+                                                <CardHeader>
+                                                    <div className="flex items-start justify-between">
+                                                        <div className="flex-1">
+                                                            <h3 className="mb-2 text-xl font-bold transition-colors duration-300 group-hover:text-primary">
+                                                                {program.name}
+                                                            </h3>
+                                                            <Badge
+                                                                variant="outline"
+                                                                className="mb-3"
+                                                            >
+                                                                {program
+                                                                    .department
+                                                                    ?.name ||
+                                                                    'General'}
+                                                            </Badge>
+                                                        </div>
+                                                    </div>
+                                                    <p className="mb-4 leading-relaxed text-muted-foreground">
+                                                        {program.description}
+                                                    </p>
+                                                </CardHeader>
+                                                <CardContent>
+                                                    <div className="space-y-3">
+                                                        <div className="flex flex-wrap gap-2">
+                                                            <Badge
+                                                                variant="secondary"
+                                                                className="text-xs"
+                                                            >
+                                                                {program.type}
+                                                            </Badge>
+                                                            <Badge
+                                                                variant="secondary"
+                                                                className="text-xs"
+                                                            >
+                                                                {program.levels}
+                                                            </Badge>
+                                                            <Badge
+                                                                variant="secondary"
+                                                                className="text-xs"
+                                                            >
+                                                                {program.status}
+                                                            </Badge>
+                                                        </div>
+                                                        {program.requirements && (
+                                                            <div>
+                                                                <h4 className="mb-2 text-sm font-semibold">
+                                                                    Requirements:
+                                                                </h4>
+                                                                <p className="text-xs leading-relaxed text-muted-foreground">
+                                                                    {
+                                                                        program.requirements
                                                                     }
-                                                                    variant="secondary"
-                                                                    className="text-xs"
-                                                                >
-                                                                    {program}
-                                                                </Badge>
-                                                            ),
+                                                                </p>
+                                                            </div>
                                                         )}
                                                     </div>
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    ))}
+                                                </CardContent>
+                                            </Card>
+                                        ))
+                                    ) : (
+                                        <div className="col-span-full py-8 text-center">
+                                            <p className="text-muted-foreground">
+                                                No programs available at the
+                                                moment.
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
                             </CardContent>
                         </Card>
@@ -162,9 +170,11 @@ export default function Academic() {
                                             className="group text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                                         >
                                             <CardHeader>
-                                                <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-primary/10 transition-transform duration-300 group-hover:scale-110">
-                                                    <facility.icon className="size-6 text-primary" />
-                                                </div>
+                                                <img
+                                                    src={logo}
+                                                    alt="academic facilities"
+                                                    className="mx-auto max-h-48 max-w-48"
+                                                />
                                                 <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-primary">
                                                     {facility.name}
                                                 </h3>

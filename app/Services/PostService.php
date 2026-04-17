@@ -27,10 +27,12 @@ final class PostService
         $data['image'] = $path;
 
         // attachment
-        $path = Storage::disk('public')
-            ->put('postAttachments', $data['attachment']);
+        if (isset($data['attachment'])) {
+            $path = Storage::disk('public')
+                ->put('postAttachments', $data['attachment']);
 
-        $data['attachment'] = $path;
+            $data['attachment'] = $path;
+        }
 
         return Post::create($data);
     }
@@ -44,7 +46,7 @@ final class PostService
             if ($post->image) {
                 Storage::disk('public')->delete($post->image);
             }
-            
+
             $path = Storage::disk('public')->put('postImages', $data['image']);
             $data['image'] = $path;
         }
@@ -55,7 +57,7 @@ final class PostService
             if ($post->attachment) {
                 Storage::disk('public')->delete($post->attachment);
             }
-            
+
             $path = Storage::disk('public')->put('postAttachments', $data['attachment']);
             $data['attachment'] = $path;
         }

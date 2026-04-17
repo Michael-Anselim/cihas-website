@@ -1,41 +1,16 @@
-import { Calendar, Download, User } from 'lucide-react';
+import { Calendar, Download } from 'lucide-react';
 import Heading from '@/components/heading';
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import type { Post } from '@/types';
 import logo from '../../../images/logo.png';
 
-const newsItems = [
-    {
-        id: 1,
-        title: 'Annual Science Fair Winners Announced',
-        excerpt:
-            "Congratulations to all participants in this year's science fair. The projects showcased incredible creativity and scientific thinking.",
-        date: '2024-04-10',
-        author: 'Science Department',
-        category: 'Academics',
-    },
-    {
-        id: 2,
-        title: 'New Library Resources Available',
-        excerpt:
-            'Our library has expanded its digital collection with new e-books and research databases accessible to all students.',
-        date: '2024-04-08',
-        author: 'Library Staff',
-        category: 'Resources',
-    },
-    {
-        id: 3,
-        title: 'Sports Teams Regional Champions',
-        excerpt:
-            'Both our basketball and soccer teams brought home regional championships after an exciting season of competition.',
-        date: '2024-04-05',
-        author: 'Athletics Department',
-        category: 'Sports',
-    },
-];
+interface NewsSummaryProps {
+    posts: Post[];
+}
 
-export default function NewsSummary() {
+export default function NewsSummary({ posts }: NewsSummaryProps) {
     return (
         <section className="relative bg-muted/20 py-16">
             <div className="absolute inset-0 bg-gradient-to-t from-muted/30 to-transparent" />
@@ -53,9 +28,10 @@ export default function NewsSummary() {
                     </CardHeader>
                     <CardContent>
                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                            {newsItems.map((news) => (
+                            {posts.length > 0 ? (
+                                posts.map((post) => (
                                 <Card
-                                    key={news.id}
+                                    key={post.id}
                                     className="group border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <CardHeader className="pb-4">
@@ -65,12 +41,12 @@ export default function NewsSummary() {
                                                 variant="secondary"
                                                 className="text-xs font-medium"
                                             >
-                                                {news.category}
+                                                {post.category}
                                             </Badge>
                                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                 <Calendar className="size-4" />
                                                 {new Date(
-                                                    news.date,
+                                                    post.date,
                                                 ).toLocaleDateString('en-US', {
                                                     month: 'short',
                                                     day: 'numeric',
@@ -79,12 +55,12 @@ export default function NewsSummary() {
                                             </div>
                                         </div>
                                         <h3 className="mb-2 text-xl leading-tight font-bold transition-colors duration-300 group-hover:text-primary">
-                                            {news.title}
+                                            {post.title}
                                         </h3>
                                     </CardHeader>
                                     <CardContent className="pt-0">
                                         <p className="mb-6 leading-relaxed text-muted-foreground">
-                                            {news.excerpt}
+                                            {post.description.substring(0, 150)}...
                                         </p>
                                         <div className="flex items-center justify-between border-t border-border/50 pt-2">
                                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -100,8 +76,13 @@ export default function NewsSummary() {
                                         </div>
                                     </CardContent>
                                 </Card>
-                            ))}
-                            <div className="mt-12 text-center">
+                                ))
+                            ) : (
+                                <div className="col-span-full text-center py-8">
+                                    <p className="text-muted-foreground">No news items available at the moment.</p>
+                                </div>
+                            )}
+                            <div className="col-span-full mt-12 text-center">
                                 <div className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground transition-colors hover:bg-primary/90">
                                     <TextLink
                                         href="#"

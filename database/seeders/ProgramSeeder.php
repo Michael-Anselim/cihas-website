@@ -30,9 +30,25 @@ class ProgramSeeder extends Seeder
         ]);
         DB::table('programs')->insert([
             [
-                'name' => 'Ordinary diploma in Computer Science',
+                'name' => 'Ordinary diploma in Social work',
                 'type' => 'long_course',
-                'department_id' => 1,
+                'department_id' => 2,
+                'description' => 'Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Magni quaerat quisquam
+                alias excepturi soluta aut optio consequatu.',
+                'requirements' => 'dolor sit amet consectetur
+                adipisicing elit. Magni
+                quaerat quisquam',
+                'image' => '/storage/programs/2KQXeDUdVwhv6e5rRNw56VAvYIOd82qZuMQGPuDO.jpg"',
+                'levels' => 'I to III',
+                'status' => 'active',
+            ],
+        ]);
+        DB::table('programs')->insert([
+            [
+                'name' => 'Ordinary diploma in Business Administration',
+                'type' => 'long_course',
+                'department_id' => 3,
                 'description' => 'Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Magni quaerat quisquam
                 alias excepturi soluta aut optio consequatu.',

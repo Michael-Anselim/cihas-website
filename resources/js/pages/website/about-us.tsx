@@ -10,6 +10,7 @@ import {
     CardHeader,
 } from '@/components/ui/card';
 import logo from '../../images/logo.png';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 const milestones = [
     {
@@ -52,16 +53,6 @@ const values = [
         title: 'Integrity',
         description:
             'We foster honesty, responsibility, and ethical behavior in all aspects of school life.',
-    },
-    {
-        title: 'Community',
-        description:
-            'We build strong relationships and create a supportive, inclusive environment.',
-    },
-    {
-        title: 'Innovation',
-        description:
-            'We embrace new ideas and approaches to prepare students for the future.',
     },
 ];
 
@@ -108,11 +99,20 @@ export default function AboutUs() {
                                                 </p>
                                             </CardContent>
 
-                                            <CardFooter className="flex justify-center">
-                                                <Button variant="secondary">
-                                                    Click to read more
-                                                </Button>
-                                            </CardFooter>
+                                            {/** Read More dialogs */}
+                                            <Dialog>
+                                                <DialogTrigger asChild>
+                                                    <CardFooter className="flex justify-center">
+                                                        <Button variant="secondary">
+                                                            Click to read more
+                                                        </Button>
+                                                    </CardFooter>
+                                                </DialogTrigger>
+
+                                                <DialogContent>
+                                                    <p>Dialog here</p>
+                                                </DialogContent>
+                                            </Dialog>
                                         </Card>
                                     ))}
                                 </div>
@@ -169,14 +169,13 @@ export default function AboutUs() {
                                 </p>
                             </CardHeader>
                             <CardContent>
-                                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                <div className="flex flex-col gap-4 md:flex-row">
                                     {values.map((value, index) => (
                                         <Card
                                             key={index}
-                                            className="group text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                                            className="group border border-primary/10 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                                         >
                                             <CardHeader>
-                                                <div className="mx-auto mb-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
                                                 <h3 className="text-xl font-bold transition-colors duration-300 group-hover:text-primary">
                                                     {value.title}
                                                 </h3>

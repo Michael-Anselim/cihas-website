@@ -7,7 +7,6 @@ use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Department;
 use App\Models\Post;
 use App\Services\PostService;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PostController extends Controller

@@ -30,7 +30,7 @@ class StorePostRequest extends FormRequest
             'date' => ['required', 'date', 'after_or_equal:today'],
             'image' => ['required', 'image', 'mimes:png,jpg', 'max:1028'],
             'description' => ['required', 'string', 'max:255'],
-            'attachment' => ['required', 'file', 'mimes:pdf', 'max:5120'],
+            'attachment' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
             'category' => ['required', Rule::in(PostCategories::cases())],
         ];
     }

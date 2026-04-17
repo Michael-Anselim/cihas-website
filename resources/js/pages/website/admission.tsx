@@ -2,33 +2,32 @@ import { Head } from '@inertiajs/react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Heading from '@/components/heading';
 import TextLink from '@/components/text-link';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 const admissionSteps = [
     {
         step: '1',
-        title: 'Application Form',
+        title: 'Fill application form',
         description:
             'Complete and submit the online application form with required documents.',
     },
     {
         step: '2',
-        title: 'Entrance Assessment',
+        title: 'Online application',
         description:
-            'Schedule and complete the entrance assessment or interview.',
+            'You will be assisted to complete the online application process on CAS-NACTIVET.',
     },
     {
         step: '3',
-        title: 'Review Process',
+        title: 'Get Admission letter',
         description:
-            'Our admissions committee reviews your application and assessment results.',
+            'For selected applicants our admission officer will contact you to get admission letter.',
     },
     {
         step: '4',
         title: 'Enrollment',
         description:
-            'Receive admission decision and complete enrollment procedures.',
+            'Reporting and registration as a course student at our institute.',
     },
 ];
 
