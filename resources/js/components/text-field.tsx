@@ -8,6 +8,7 @@ interface TextFieldProps {
     errors?: string;
     type?: string;
     defaultValue?: string;
+    placeholder?: string;
 }
 export default function TextField({
     name,
@@ -15,6 +16,7 @@ export default function TextField({
     errors,
     type,
     defaultValue,
+    placeholder,
 }: TextFieldProps) {
     return (
         <Field>
@@ -24,6 +26,7 @@ export default function TextField({
                 name={name}
                 className="border-primary/30"
                 defaultValue={defaultValue}
+                placeholder={placeholder}
             />
             {errors && <FieldError>{errors}</FieldError>}
         </Field>

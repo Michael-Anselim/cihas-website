@@ -66,27 +66,30 @@ export default function ProgramsSummary({ data }: { data: Program[] }) {
                             ))}
                         </div>
                         <div className="mt-16 text-center">
-                            <div className="rounded-2xl border border-primary/20 bg-linear-to-r from-primary/10 to-accent/10 p-8">
-                                <h3 className="mb-3 text-xl font-bold text-foreground">
-                                    Ready to Get Started?
-                                </h3>
-                                <p className="mx-auto mb-6 max-w-md text-muted-foreground">
-                                    Contact our admissions office to learn more
-                                    about enrollment and program opportunities.
-                                </p>
-                                <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-                                    <TextLink
-                                        href="#"
-                                        className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-                                    >
-                                        Apply
-                                    </TextLink>
-                                    <TextLink
-                                        href="#"
-                                        className="rounded-lg border border-border px-6 py-3 font-semibold transition-colors hover:bg-accent"
-                                    >
-                                        View all Programs
-                                    </TextLink>
+                            <div className="overflow-hidden rounded-2xl bg-secondary text-secondary-foreground shadow-lg">
+                                <div className="h-1 bg-linear-to-r from-primary via-chart-2 to-chart-5" />
+                                <div className="p-8">
+                                    <h3 className="mb-3 text-xl font-bold text-secondary-foreground">
+                                        Ready to Get Started?
+                                    </h3>
+                                    <p className="mx-auto mb-6 max-w-md text-secondary-foreground/70">
+                                        Contact our admissions office to learn more
+                                        about enrollment and program opportunities.
+                                    </p>
+                                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                                        <TextLink
+                                            href="#"
+                                            className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                                        >
+                                            Apply Now
+                                        </TextLink>
+                                        <TextLink
+                                            href="#"
+                                            className="rounded-lg border border-secondary-foreground/20 px-6 py-3 font-semibold text-secondary-foreground transition-colors hover:bg-secondary-foreground/10"
+                                        >
+                                            View all Programs
+                                        </TextLink>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,11 @@
 import { Link } from '@inertiajs/react';
-import { GraduationCap, LayoutGrid, Megaphone, Notebook } from 'lucide-react';
+import {
+    Album,
+    GraduationCap,
+    LayoutGrid,
+    Megaphone,
+    Notebook,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -14,6 +20,7 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { index as departmentIndex } from '@/routes/departments';
+import { index as galeryIndex } from '@/routes/galery';
 import { index as postIndex } from '@/routes/posts';
 import { index as programIndex } from '@/routes/programs';
 import type { NavItem } from '@/types';
@@ -38,6 +45,11 @@ const mainNavItems: NavItem[] = [
         title: 'Posts',
         href: postIndex(),
         icon: Megaphone,
+    },
+    {
+        title: 'Galery',
+        href: galeryIndex(),
+        icon: Album,
     },
 ];
 
