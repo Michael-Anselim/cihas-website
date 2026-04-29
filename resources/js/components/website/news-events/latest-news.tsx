@@ -95,16 +95,13 @@ export default function LatestNews() {
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     {post.attachment ? (
-                                                        <TextLink
-                                                            download
-                                                            href={
-                                                                post.attachment
-                                                            }
-                                                            className="flex items-center gap-4"
+                                                        <a
+                                                            href={post.attachment}
+                                                            className="flex items-center gap-4 text-foreground underline-offset-4 transition-colors duration-300 ease-out hover:underline"
                                                         >
                                                             <Download className="size-4" />
                                                             Download
-                                                        </TextLink>
+                                                        </a>
                                                     ) : (
                                                         <span className="flex items-center gap-4">
                                                             <User className="size-4" />

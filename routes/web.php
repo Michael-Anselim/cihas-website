@@ -21,10 +21,14 @@ Route::get('/news-events', [WebController::class, 'newsEvents'])
     ->name('news-events');
 Route::get('/ict-services', [WebController::class, 'ictServices'])
     ->name('ict-services');
-Route::get('/galery', [WebController::class, 'gallery'])
+Route::get('/web-galery', [WebController::class, 'gallery'])
     ->name('galery');
 Route::get('/contact-us', [WebController::class, 'contactUs'])
     ->name('contact-us');
+Route::get('/download/{post}', [WebController::class, 'download'])
+    ->middleware('throttle:5,1')
+    ->name('download.attachment');
+
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])
         ->name('dashboard');

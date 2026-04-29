@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galery;
 use App\Models\Post;
 use App\Models\Program;
 use Illuminate\Support\Facades\Storage;
@@ -63,7 +64,7 @@ class WebController extends Controller
             ->get()
             ->map(function ($post) {
                 $post->image = $post->image ? Storage::url($post->image) : null;
-                $post->attachment = $post->attachment ? Storage::url($post->attachment) : null;
+                $post->attachment = $post->attachment ? route('download.attachment', $post->id) : null;
 
                 return $post;
             });
@@ -78,7 +79,30 @@ class WebController extends Controller
 
     public function gallery()
     {
-        return Inertia::render('website/gallery');
+        $albums = Galery::query()
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(function ($album) {
+                $album->image_path = $album->image_path ? Storage::url($album->image_path) : null;
+
+                return $album;
+            });
+
+        return Inertia::render('website/gallery', compact('albums'));
+    }
+
+    public function download(Post $post)
+    {
+
+        // check if file exists
+        if (! $post->attachment) {
+            abort(404, 'File not found');
+        }
+
+        $path = Storage::disk('public')->path($post->attachment);
+
+        return response()->download($path, $post->title.'.'.pathinfo($post->attachment, PATHINFO_EXTENSION));
+
     }
 
     public function contactUs()

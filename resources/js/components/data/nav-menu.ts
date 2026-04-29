@@ -7,6 +7,6 @@ export const navMenus: NavItem[] = [
     { title: 'Academic', href: '/academic' },
     { title: 'News & events', href: '/news-events' },
     { title: 'ICT services', href: '/ict-services' },
-    { title: 'Galery', href: '/galery' },
+    { title: 'Galery', href: '/web-galery' },
     { title: 'Contact Us', href: '/contact-us' },
 ];
