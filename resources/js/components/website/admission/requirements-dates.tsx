@@ -1,4 +1,6 @@
 import Heading from '@/components/heading';
+import { Badge } from '@/components/ui/badge';
+import type { AdmissionWindow } from '@/types';
 
 const requirements = [
     'Completed application form',
@@ -10,7 +12,7 @@ const requirements = [
     'Transcript for inservice',
 ];
 
-export default function RequirementsAndDates() {
+export default function RequirementsAndDates({ data }: AdmissionWindow) {
     return (
         <section className="bg-muted/20 py-16">
             <div className="mx-auto max-w-6xl px-4">
@@ -27,11 +29,16 @@ export default function RequirementsAndDates() {
                         </h3>
                         <ul className="space-y-3">
                             {requirements.map((requirement, index) => (
-                                <li key={index} className="flex items-center gap-3">
+                                <li
+                                    key={index}
+                                    className="flex items-center gap-3"
+                                >
                                     <div className="flex size-5 flex-shrink-0 items-center justify-center rounded-full bg-chart-2 text-xs font-bold text-white">
                                         {index + 1}
                                     </div>
-                                    <span className="text-muted-foreground">{requirement}</span>
+                                    <span className="text-muted-foreground">
+                                        {requirement}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -41,15 +48,36 @@ export default function RequirementsAndDates() {
                         <h3 className="mb-6 text-xl font-bold text-primary">
                             Important Dates
                         </h3>
+                        <Badge>
+                            {' '}
+                            Admission winodws is: {data?.status || 'N/A'}
+                        </Badge>
                         <div className="space-y-4">
                             {[
-                                { label: 'Academic year', value: '2025/2026' },
-                                { label: 'Application Starts', value: 'March 31' },
-                                { label: 'Application Ends', value: 'April 1–30' },
-                                { label: 'Admission Window', value: 'May 15' },
+                                {
+                                    label: 'Academic year',
+                                    value: data?.academic_year || 'N/A',
+                                },
+                                {
+                                    label: 'Application Starts',
+                                    value: data?.start_date || 'N/A',
+                                },
+                                {
+                                    label: 'Application Ends',
+                                    value: data?.end_date || 'N/A',
+                                },
+                                {
+                                    label: 'Admission Window',
+                                    value: data?.admission_window || 'N/A',
+                                },
                             ].map((item, index) => (
-                                <div key={index} className="flex items-center justify-between border-b border-primary/10 pb-3 last:border-0 last:pb-0">
-                                    <span className="font-medium">{item.label}</span>
+                                <div
+                                    key={index}
+                                    className="flex items-center justify-between border-b border-primary/10 pb-3 last:border-0 last:pb-0"
+                                >
+                                    <span className="font-medium">
+                                        {item.label}
+                                    </span>
                                     <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
                                         {item.value}
                                     </span>

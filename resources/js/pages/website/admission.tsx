@@ -1,9 +1,13 @@
 import { Head } from '@inertiajs/react';
+import AdmissionContact from '@/components/website/admission/contact';
 import AdmissionProcess from '@/components/website/admission/process';
 import RequirementsAndDates from '@/components/website/admission/requirements-dates';
-import AdmissionContact from '@/components/website/admission/contact';
+import type { AdmissionWindow } from '@/types';
 
-export default function Admission() {
+type props = {
+    admissionWindow: AdmissionWindow;
+};
+export default function Admission({ admissionWindow }: props) {
     return (
         <>
             <Head title="Admission" />
@@ -26,7 +30,7 @@ export default function Admission() {
                     </div>
                 </section>
                 <AdmissionProcess />
-                <RequirementsAndDates />
+                <RequirementsAndDates data={admissionWindow} />
                 <AdmissionContact />
             </div>
         </>

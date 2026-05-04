@@ -25,16 +25,6 @@ const milestones = [
         labelColor: 'text-chart-2',
     },
     {
-        year: 'Our partners',
-        title: 'Technology Integration',
-        description:
-            'Implemented modern ICT infrastructure and digital learning platforms.',
-        icon: Target,
-        cardColor: 'border-chart-5/40 bg-chart-5/5',
-        iconColor: 'bg-chart-5 text-white',
-        labelColor: 'text-chart-5',
-    },
-    {
         year: 'Our leaders',
         title: 'Excellence Recognition',
         description:
@@ -62,19 +52,29 @@ export default function OurStory() {
                             key={index}
                             className={`group rounded-2xl border-2 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${milestone.cardColor}`}
                         >
-                            <div className={`mx-auto mb-4 flex size-14 items-center justify-center rounded-full ${milestone.iconColor}`}>
+                            <div
+                                className={`mx-auto mb-4 flex size-14 items-center justify-center rounded-full ${milestone.iconColor}`}
+                            >
                                 <milestone.icon className="size-7" />
                             </div>
-                            <div className={`mb-2 text-sm font-semibold uppercase tracking-wider ${milestone.labelColor}`}>
+                            <div
+                                className={`mb-2 text-sm font-semibold tracking-wider uppercase ${milestone.labelColor}`}
+                            >
                                 {milestone.year}
                             </div>
-                            <h3 className="mb-3 text-lg font-bold">{milestone.title}</h3>
+                            <h3 className="mb-3 text-lg font-bold">
+                                {milestone.title}
+                            </h3>
                             <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                                 {milestone.description}
                             </p>
                             <Dialog>
                                 <DialogTrigger asChild>
-                                    <Button variant="outline" size="sm" className="w-full">
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        className="w-full"
+                                    >
                                         Read more
                                     </Button>
                                 </DialogTrigger>

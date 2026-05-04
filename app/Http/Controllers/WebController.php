@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdmissionWindow;
 use App\Models\Galery;
 use App\Models\Post;
 use App\Models\Program;
@@ -39,7 +40,13 @@ class WebController extends Controller
 
     public function admission()
     {
-        return Inertia::render('website/admission');
+        $admissionWindow = AdmissionWindow::query()
+            ->select('academic_year', 'start_date', 'end_date', 'admission_window', 'status')
+            ->where('status', 'open')
+            ->orderByDesc('created_at')
+            ->first();
+
+        return Inertia::render('website/admission', compact('admissionWindow'));
     }
 
     public function academic()

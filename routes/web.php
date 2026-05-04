@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmissionWindowController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GaleryController;
@@ -29,6 +30,7 @@ Route::get('/download/{post}', [WebController::class, 'download'])
     ->middleware('throttle:5,1')
     ->name('download.attachment');
 
+// Admin routes
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])
         ->name('dashboard');
@@ -44,6 +46,9 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
 
     // Gallery
     Route::resource('galery', GaleryController::class);
+
+    // Admission
+    Route::resource('admission-windows', AdmissionWindowController::class);
 });
 
 require __DIR__.'/settings.php';

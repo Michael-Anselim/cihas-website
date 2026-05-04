@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react';
 import {
     Album,
+    Calendar,
     GraduationCap,
     LayoutGrid,
     Megaphone,
@@ -24,6 +25,7 @@ import { index as galeryIndex } from '@/routes/galery';
 import { index as postIndex } from '@/routes/posts';
 import { index as programIndex } from '@/routes/programs';
 import type { NavItem } from '@/types';
+import { index } from '@/routes/admission-windows';
 
 const mainNavItems: NavItem[] = [
     {
@@ -50,6 +52,11 @@ const mainNavItems: NavItem[] = [
         title: 'Galery',
         href: galeryIndex(),
         icon: Album,
+    },
+    {
+        title: 'Admission',
+        href: index(),
+        icon: Calendar,
     },
 ];
 
