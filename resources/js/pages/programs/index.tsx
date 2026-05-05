@@ -5,10 +5,15 @@ import ProgramsTable from '@/components/tables/program-table';
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import type { PageProps } from '@inertiajs/core';
 import type { Program, ProgramResponse } from '@/types';
 
+interface ProgramsProps extends PageProps {
+    programs: ProgramResponse;
+}
+
 export default function Programs() {
-    const { programs } = usePage<{ programs: ProgramResponse }>().props;
+    const { programs } = usePage<ProgramsProps>().props;
     console.log(programs);
 
     const data: Program[] = programs.data;

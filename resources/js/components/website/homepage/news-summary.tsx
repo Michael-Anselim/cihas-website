@@ -1,4 +1,4 @@
-import { Calendar, Download } from 'lucide-react';
+import { Calendar, Download, User } from 'lucide-react';
 import Heading from '@/components/heading';
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
@@ -69,10 +69,10 @@ export default function NewsSummary({ posts }: NewsSummaryProps) {
                                                 )}
                                                 ...
                                             </p>
-                                            <div className="flex items-center justify-between border-t border-border/50 pt-2">
+                                            <div className="flex items-center justify-around border-t border-border/50 pt-2">
                                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                    <Download className="size-4" />
-                                                    Download
+                                                    <User className="size-4" />
+                                                    {post.department?.name}
                                                 </div>
                                                 <TextLink
                                                     href="#"
@@ -94,7 +94,7 @@ export default function NewsSummary({ posts }: NewsSummaryProps) {
                             <div className="col-span-full mt-12 text-center">
                                 <div className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground transition-colors hover:bg-primary/90">
                                     <TextLink
-                                        href="#"
+                                        href="/news-events"
                                         className="font-semibold text-primary-foreground"
                                     >
                                         View all news

@@ -6,11 +6,15 @@ import DepartmentTable from '@/components/tables/department-table';
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import type { PageProps } from '@inertiajs/core';
 import type { Department, DepartmentResponse } from '@/types';
 
+interface DepartmentsProps extends PageProps {
+    departments: DepartmentResponse;
+}
+
 export default function Departments() {
-    const { departments } = usePage<{ departments: DepartmentResponse }>()
-        .props;
+    const { departments } = usePage<DepartmentsProps>().props;
     console.log(departments);
     const data: Department[] = departments.data;
 

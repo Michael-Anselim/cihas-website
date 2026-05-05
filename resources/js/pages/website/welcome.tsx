@@ -1,13 +1,22 @@
+import type { PageProps } from '@inertiajs/core';
 import { Head, usePage } from '@inertiajs/react';
 import CarouselSection from '@/components/website/homepage/carousel';
 import FeaturesSection from '@/components/website/homepage/features';
 import NewsSummary from '@/components/website/homepage/news-summary';
 import ProgramsSummary from '@/components/website/homepage/programs-summary';
 import WelcomeNote from '@/components/website/homepage/welcome-note';
-import type { Program, Post } from '@/types';
+import type { Program, Post, CarouselItem } from '@/types';
 
-export default function Welcome() {
-    const { programs, posts } = usePage<{ programs: Program[], posts: Post[] }>().props;
+interface CarouselIndexProps extends PageProps {
+    carousels: CarouselItem[];
+}
+export default function Welcome({ carousels }: CarouselIndexProps) {
+    const { programs, posts } = usePage<{
+        programs: Program[];
+        posts: Post[];
+    }>().props;
+
+    console.log(carousels);
 
     return (
         <>
@@ -16,7 +25,7 @@ export default function Welcome() {
             <div className="scroll-smooth">
                 {/** Carousel section */}
                 <section className="animate-fade-in">
-                    <CarouselSection />
+                    <CarouselSection data={carousels} />
                 </section>
 
                 {/** Welcome note */}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdmissionWindowController;
+use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GaleryController;
@@ -49,6 +50,9 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
 
     // Admission
     Route::resource('admission-windows', AdmissionWindowController::class);
+
+    // Carousel
+    Route::resource('carousel', CarouselController::class);
 });
 
 require __DIR__.'/settings.php';

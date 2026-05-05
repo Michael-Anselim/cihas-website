@@ -5,8 +5,13 @@ import SelectField from '@/components/select-field';
 import SubmitButtons from '@/components/submit-buttons';
 import TextField from '@/components/text-field';
 import { FieldGroup } from '@/components/ui/field';
+import type { PageProps } from '@inertiajs/core';
 import { store } from '@/routes/posts';
 import type { Department, SelectFields, TextInputFields } from '@/types';
+
+interface CreatePostProps extends PageProps {
+    departments: Department[];
+}
 
 const postInputFields: TextInputFields[] = [
     {
@@ -38,7 +43,7 @@ const postInputFields: TextInputFields[] = [
 
 export default function CreatePosts() {
     // fetch data from inertia props
-    const { departments } = usePage<{ departments: Department[] }>().props;
+    const { departments } = usePage<CreatePostProps>().props;
 
     //post select fields
     const postSelectFields: SelectFields[] = [

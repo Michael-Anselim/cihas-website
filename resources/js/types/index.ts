@@ -7,3 +7,4 @@ export type * from './programs';
 export type * from './post';
 export type * from './galery';
 export type * from './admission-window';
+export type * from './carousel';

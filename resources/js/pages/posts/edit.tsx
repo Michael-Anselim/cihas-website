@@ -5,8 +5,14 @@ import SelectField from '@/components/select-field';
 import SubmitButtons from '@/components/submit-buttons';
 import TextField from '@/components/text-field';
 import { FieldGroup } from '@/components/ui/field';
+import type { PageProps } from '@inertiajs/core';
 import { update } from '@/routes/posts';
 import type { Department, Post, SelectFields, TextInputFields } from '@/types';
+
+interface EditPostProps extends PageProps {
+    post: Post;
+    departments: Department[];
+}
 
 const postInputFields: TextInputFields[] = [
     {
@@ -37,7 +43,7 @@ const postInputFields: TextInputFields[] = [
 ];
 
 export default function EditPost() {
-    const { post, departments } = usePage<{ post: Post; departments: Department[] }>().props;
+    const { post, departments } = usePage<EditPostProps>().props;
 
     // post select fields
     const postSelectFields: SelectFields[] = [

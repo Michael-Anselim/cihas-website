@@ -21,32 +21,32 @@ const cardColors = [
 const departments = [
     {
         name: 'Admissions Office',
-        contact: 'admission@cihas.tz',
-        phone: '+1 (234) 567-891',
+        contact: 'admission@cihas.ac.tz',
+        phone: '+255 678 986 473',
         description: 'New student enrollment and applications',
     },
     {
         name: 'Academic Affairs',
-        contact: 'academic@cihas.tz',
-        phone: '+255 769 957 583',
+        contact: 'academic@cihas.ac.tz',
+        phone: '+255 788 005 802',
         description: 'Curriculum, grades, and academic policies',
     },
     {
         name: 'Finance Office',
-        contact: 'accounting@cihas.tz',
-        phone: '+255 769 957 583',
+        contact: 'bursar@cihas.ac.tz',
+        phone: '+255 744 373 830',
         description: 'Tuition, fees, and financial aid',
     },
     {
-        name: 'Athletics Department',
-        contact: 'sport@cihas.tz',
-        phone: '+255 769 957 583',
+        name: 'Sport Department',
+        contact: 'N/A',
+        phone: '+255 763 387 935',
         description: 'Sports programs and athletic events',
     },
     {
         name: 'IT Support',
-        contact: 'it@cihas.tz',
-        phone: '+255 769 957 583',
+        contact: 'ict@cihas.ac.tz',
+        phone: '+255 678 986 473',
         description: 'Technical support and technology services',
     },
 ];
@@ -67,24 +67,36 @@ export default function DepartmentContact() {
                             className={`group rounded-2xl border-2 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${cardColors[index % cardColors.length]}`}
                         >
                             <div className="mb-3 flex items-start gap-3">
-                                <div className={`flex size-10 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${iconColors[index % iconColors.length]}`}>
+                                <div
+                                    className={`flex size-10 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${iconColors[index % iconColors.length]}`}
+                                >
                                     <Building className="size-5" />
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="font-semibold">{dept.name}</h3>
-                                    <p className="mt-1 text-sm text-muted-foreground">{dept.description}</p>
+                                    <h3 className="font-semibold">
+                                        {dept.name}
+                                    </h3>
+                                    <p className="mt-1 text-sm text-muted-foreground">
+                                        {dept.description}
+                                    </p>
                                 </div>
                             </div>
                             <div className="space-y-2 text-sm">
                                 <div className="flex items-center gap-2">
                                     <Mail className="size-4 text-muted-foreground" />
-                                    <TextLink href={`mailto:${dept.contact}`} className="text-muted-foreground hover:text-primary">
+                                    <TextLink
+                                        href={`mailto:${dept.contact}`}
+                                        className="text-muted-foreground hover:text-primary"
+                                    >
                                         {dept.contact}
                                     </TextLink>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <Phone className="size-4 text-muted-foreground" />
-                                    <TextLink href={`tel:${dept.phone}`} className="text-muted-foreground hover:text-primary">
+                                    <TextLink
+                                        href={`tel:${dept.phone}`}
+                                        className="text-muted-foreground hover:text-primary"
+                                    >
                                         {dept.phone}
                                     </TextLink>
                                 </div>

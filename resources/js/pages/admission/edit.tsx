@@ -11,7 +11,12 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { update, index } from '@/routes/admission-windows';
+import type { PageProps } from '@inertiajs/core';
 import type { AdmissionWindow } from '@/types';
+
+interface EditAdmissionWindowProps extends PageProps {
+    admissionWindow: AdmissionWindow;
+}
 
 type AdmissionWindowStringFields = Exclude<keyof AdmissionWindow, 'id'>;
 
@@ -46,7 +51,7 @@ const admissionFields: TextInputFields[] = [
 ];
 
 export default function EditAdmissionWindow() {
-    const { admissionWindow } = usePage<{ admissionWindow: AdmissionWindow }>().props;
+    const { admissionWindow } = usePage<EditAdmissionWindowProps>().props;
 
     return (
         <>

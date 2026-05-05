@@ -1,14 +1,17 @@
+import type { PageProps } from '@inertiajs/core';
 import { Head, usePage } from '@inertiajs/react';
 import SummaryCard from '@/components/summary-card';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { dashboard } from '@/routes';
 
+interface DashboardProps extends PageProps {
+    departments: number;
+    posts: number;
+    programs: number;
+}
+
 export default function Dashboard() {
-    const { departments, posts, programs } = usePage<{ 
-        departments: number; 
-        posts: number; 
-        programs: number; 
-    }>().props;
+    const { departments, posts, programs } = usePage<DashboardProps>().props;
 
     return (
         <>

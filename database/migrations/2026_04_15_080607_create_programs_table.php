@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->foreignId('department_id')->constrained('departments');
-            $table->string('description');
-            $table->string('requirements');
+            $table->text('description');
+            $table->text('requirements');
             $table->string('image');
             $table->string('levels');
             $table->string('status');

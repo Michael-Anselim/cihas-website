@@ -27,5 +27,11 @@ class DepartmentSeeder extends Seeder
             'code' => 'CMT',
             'status' => 'active',
         ]);
+
+        DB::table('departments')->insert([
+            'name' => 'Social work',
+            'code' => 'SW',
+            'status' => 'active',
+        ]);
     }
 }

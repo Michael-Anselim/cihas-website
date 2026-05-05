@@ -50,7 +50,7 @@ export default function RequirementsAndDates({ data }: AdmissionWindow) {
                         </h3>
                         <Badge>
                             {' '}
-                            Admission winodws is: {data?.status || 'N/A'}
+                            Admission winodws is: {data?.status || 'Closed'}
                         </Badge>
                         <div className="space-y-4">
                             {[

@@ -2,6 +2,7 @@ import { Link } from '@inertiajs/react';
 import {
     Album,
     Calendar,
+    Camera,
     GraduationCap,
     LayoutGrid,
     Megaphone,
@@ -20,12 +21,13 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as admissionIndex } from '@/routes/admission-windows';
+import { index as carouselIndex } from '@/routes/carousel';
 import { index as departmentIndex } from '@/routes/departments';
 import { index as galeryIndex } from '@/routes/galery';
 import { index as postIndex } from '@/routes/posts';
 import { index as programIndex } from '@/routes/programs';
 import type { NavItem } from '@/types';
-import { index } from '@/routes/admission-windows';
 
 const mainNavItems: NavItem[] = [
     {
@@ -55,8 +57,13 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Admission',
-        href: index(),
+        href: admissionIndex(),
         icon: Calendar,
+    },
+    {
+        title: 'Carousel',
+        href: carouselIndex(),
+        icon: Camera,
     },
 ];
 

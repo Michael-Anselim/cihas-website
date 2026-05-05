@@ -11,8 +11,13 @@ import {
     SelectContent,
     SelectValue,
 } from '@/components/ui/select';
+import type { PageProps } from '@inertiajs/core';
 import { update } from '@/routes/departments';
-import { Department } from '@/types';
+import type { Department } from '@/types';
+
+interface EditDepartmentProps extends PageProps {
+    department: Department;
+}
 
 interface TextInputFields {
     name: string;
@@ -38,7 +43,7 @@ const departmentFields: TextInputFields[] = [
 ];
 
 export default function EditDepartment() {
-    const { department } = usePage<{ department: Department }>().props;
+    const { department } = usePage<EditDepartmentProps>().props;
 
     return (
         <>

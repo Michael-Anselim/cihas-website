@@ -40,7 +40,7 @@ export default function ProgramsSummary({ data }: { data: Program[] }) {
                                                 alt={program.name}
                                                 aria-label={`Program name: ${program.name}`}
                                                 aria-hidden="true"
-                                                className="max-h-48"
+                                                className="aspect-video"
                                             />
                                             <div className="flex-1">
                                                 <h3 className="text-xl font-bold transition-colors duration-300 group-hover:text-primary">
@@ -55,7 +55,7 @@ export default function ProgramsSummary({ data }: { data: Program[] }) {
                                     <CardContent className="flex justify-end">
                                         <Button variant="link" asChild>
                                             <TextLink
-                                                href="#"
+                                                href="/academic"
                                                 className="text-sm font-medium"
                                             >
                                                 Read more →
@@ -73,18 +73,19 @@ export default function ProgramsSummary({ data }: { data: Program[] }) {
                                         Ready to Get Started?
                                     </h3>
                                     <p className="mx-auto mb-6 max-w-md text-secondary-foreground/70">
-                                        Contact our admissions office to learn more
-                                        about enrollment and program opportunities.
+                                        Contact our admissions office to learn
+                                        more about enrollment and program
+                                        opportunities.
                                     </p>
                                     <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
                                         <TextLink
-                                            href="#"
+                                            href="admission"
                                             className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
                                         >
                                             Apply Now
                                         </TextLink>
                                         <TextLink
-                                            href="#"
+                                            href="/academic"
                                             className="rounded-lg border border-secondary-foreground/20 px-6 py-3 font-semibold text-secondary-foreground transition-colors hover:bg-secondary-foreground/10"
                                         >
                                             View all Programs

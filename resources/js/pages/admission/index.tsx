@@ -1,4 +1,5 @@
-import { Head } from '@inertiajs/react';
+import type { PageProps } from '@inertiajs/core';
+import { Head, usePage } from '@inertiajs/react';
 import { PlusCircle } from 'lucide-react';
 import Heading from '@/components/heading';
 import AdmiWindowTable from '@/components/tables/admission-windows-table';
@@ -7,10 +8,12 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { AdmissionWindowResponse } from '@/types';
 
-type props = {
-    admWindows: AdmissionWindowResponse[];
-};
-export default function AdmissionWindows({ admWindows }: props) {
+interface AdmissionWindowsProps extends PageProps {
+    admWindows: AdmissionWindowResponse;
+}
+
+export default function AdmissionWindows() {
+    const { admWindows } = usePage<AdmissionWindowsProps>().props;
     return (
         <>
             <Head title="Admission" />

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdmissionWindow;
+use App\Models\Carousel;
 use App\Models\Galery;
 use App\Models\Post;
 use App\Models\Program;
@@ -30,7 +31,18 @@ class WebController extends Controller
             ->take(4)
             ->get();
 
-        return Inertia::render('website/welcome', compact('programs', 'posts'));
+        // fetch carousel images
+        $carousels = Carousel::query()
+            ->select('image_path', 'description')
+            ->orderByDesc('created_at')
+            ->get();
+
+        // // Generate storage URLS for carousel images
+        // $carousels->each(function ($carousel) {
+        //     $carousel->image_path = $carousel->image_path ? Storage::url($carousel->image_path) : null;
+        // });
+
+        return Inertia::render('website/welcome', compact('programs', 'posts', 'carousels'));
     }
 
     public function aboutUs()

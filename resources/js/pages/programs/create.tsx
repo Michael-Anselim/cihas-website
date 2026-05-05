@@ -5,8 +5,13 @@ import SubmitButtons from '@/components/submit-buttons';
 import TextAreaField from '@/components/text-area-field';
 import TextField from '@/components/text-field';
 import { FieldGroup } from '@/components/ui/field';
+import type { PageProps } from '@inertiajs/core';
 import { index, store } from '@/routes/programs';
 import type { Department, SelectFields, TextInputFields } from '@/types';
+
+interface CreateProgramProps extends PageProps {
+    departments: Department[];
+}
 
 // program normal input fields
 const formInputFields: TextInputFields[] = [
@@ -28,7 +33,7 @@ const formTextAreaFields: TextInputFields[] = [
     },
 ];
 export default function CreateProgram() {
-    const { departments } = usePage<{ departments: Department[] }>().props;
+    const { departments } = usePage<CreateProgramProps>().props;
 
     // program select fields
     const formSelectFields: SelectFields[] = [

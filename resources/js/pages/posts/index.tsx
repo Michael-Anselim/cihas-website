@@ -6,11 +6,15 @@ import PostTable from '@/components/tables/post-table';
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import type { PageProps } from '@inertiajs/core';
 import type { Post, PostResponse } from '@/types';
 
+interface PostsProps extends PageProps {
+    posts: PostResponse;
+}
+
 export default function Posts() {
-    const { posts } = usePage<{ posts: PostResponse }>()
-        .props;
+    const { posts } = usePage<PostsProps>().props;
     console.log(posts);
     const data: Post[] = posts.data;
 

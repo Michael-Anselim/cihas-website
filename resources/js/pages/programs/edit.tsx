@@ -14,6 +14,7 @@ import {
     CardHeader,
 } from '@/components/ui/card';
 import { FieldGroup } from '@/components/ui/field';
+import type { PageProps } from '@inertiajs/core';
 import { index, update } from '@/routes/programs';
 import type {
     Department,
@@ -21,6 +22,11 @@ import type {
     SelectFields,
     TextInputFields,
 } from '@/types';
+
+interface EditProgramProps extends PageProps {
+    departments: Department[];
+    program: Program;
+}
 
 // program normal input fields
 const formInputFields: TextInputFields[] = [
@@ -42,10 +48,7 @@ const formTextAreaFields: TextInputFields[] = [
     },
 ];
 export default function EditProgram() {
-    const { departments, program } = usePage<{
-        departments: Department[];
-        program: Program;
-    }>().props;
+    const { departments, program } = usePage<EditProgramProps>().props;
 
     console.log(program.image);
 
